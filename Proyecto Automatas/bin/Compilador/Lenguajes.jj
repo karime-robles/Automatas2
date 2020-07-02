@@ -1,0 +1,201 @@
+
+
+PARSER_BEGIN(LenguajesProy)
+package Proyecto;
+import java.util.ArrayList;
+
+public class LenguajesProy
+{
+
+  
+  public static void main(String args []) throws ParseException
+  {
+     
+     try {
+      LenguajesProy analizador = new LenguajesProy(System.in);
+      analizador.Programa();
+
+      }
+	catch (ParseException e)
+	{
+	  System.out.println(e.getMessage());
+	}
+	catch(Throwable e)
+	 {
+	  System.out.println(e.getMessage());
+	 }
+	  
+
+	
+  }
+}
+
+PARSER_END(LenguajesProy)
+
+TOKEN :
+{
+  
+	<PUBLIC: "public" > { System.out.println("MODIFICADOR - >"+image); }
+	|<PRIVATE: "private" > { System.out.println("MODIFICADOR - >"+image); }
+	|<CLASS: "class"> { System.out.println("DECLARACION DE CLASE - >"+image); }
+	|<IF: "if"> { System.out.println("IF - >"+image); } 
+	|<WHILE: "while"> { System.out.println("WHILE - >"+image); } 
+}
+
+TOKEN :
+{
+  
+	<LPAREN: "("> { System.out.println("PARENTIZQ - >"+image); }
+	|<RPAREN: ")"> { System.out.println("PARENTDER - >"+image); }
+	|<LBRACE: "{"> { System.out.println("LLAVEIZQ - >"+image); }
+	|<RBRACE: "}"> { System.out.println("LLAVEDERE - >"+image); }
+	|<SEMICOLON: ";"> { System.out.println("PUNTO Y COMA - >"+image); } 
+
+}
+
+TOKEN :
+{
+  
+	<ASIGNACION: "="> { System.out.println("ASIGNACION -> "+image); }
+	|<MAYORQUE: ">"> { System.out.println("OPERADOR -> "+image); }
+	|<MENORQUE: "<"> { System.out.println("OPERADOR -> "+image); }
+	|<MAYORIGUALQUE: ">="> { System.out.println("OPERADOR -> "+image); }
+	|<MENORIGUALQUE: "<="> { System.out.println("OPERADOR -> "+image); }
+	|<IGUALQUE: "=="> { System.out.println("OPERADOR -> "+image); }
+	|<DIFERENTEDE: "!="> { System.out.println("OPERADOR -> "+image); }
+
+
+}
+
+TOKEN :
+{
+  	//TYPES
+	<BOOLEAN: "boolean"> { System.out.println("VARIABLE_TYPE -> "+image); }
+	|<INT: "int"> { System.out.println("VARIABLE_TYPE -> "+image); }
+	|<INTEGER_LITERAL: (["0"-"9"])+> { System.out.println("INTEGER_LITERAL -> "+image); }
+	//BOLEANS
+	|<TRUE: "true" > { System.out.println("BOOLEAN_LITERAL ->"+image); }
+	|<FALSE: "false" > { System.out.println("BOOLEAN_LITERAL ->"+image); }
+	|<IDENTIFIER: ["a"-"z","_"](["a"-"z"])*> { System.out.println("IDENTIFIER -> "+image); }
+	
+}
+
+
+SKIP :
+{
+  " "
+| "\r"
+| "\t"
+| "\n"
+}
+
+
+void Programa() :
+{}
+{
+ MODIFICADOR()<CLASS><IDENTIFIER><LBRACE> Principal() <RBRACE>
+}
+
+
+void MODIFICADOR() :
+{}
+{
+ <PUBLIC> | <PRIVATE>
+}
+
+void DeclaracionCampo() :
+{}
+{
+  DeclaracionDeVariable()
+}
+
+
+
+void DeclaracionDeVariable() :
+{}
+{
+ 	MODIFICADOR()TIPO() DeclaradorVariable() <SEMICOLON>
+}
+
+void TIPO() :
+{}
+{
+ <BOOLEAN>|<INT>
+ 
+}
+
+void statement() :
+{}
+{
+DeclaracionDeVariable() | DeclaracionIF() | DeclaracionWhile()
+
+}
+
+void DeclaradorVariable() :
+{}
+{
+ <IDENTIFIER> <ASIGNACION> (<INTEGER_LITERAL> | boolean_literal() ) 
+ 
+}
+
+void boolean_literal() :
+{}
+{
+ <TRUE> | <FALSE >
+}
+
+void DeclaracionIF() :
+{}
+{
+  <IF><LPAREN> Comparaciones() <RPAREN> statement()
+}
+
+void DeclaracionWhile() :
+{}
+{
+<WHILE><LPAREN> Comparaciones() <RPAREN> statement()
+}
+void Principal() :
+{}
+{
+  Sentencias()
+}
+
+
+void Comparaciones() :
+{}
+{
+Valor()Operador()Valor() 
+}
+
+void Valor() :
+{}
+{
+<INTEGER_LITERAL> | <IDENTIFIER>
+}
+void Sentencias() :
+{}
+{
+  DeclaracionCampo()  statement()
+}
+
+
+void Operador() :
+{}
+{
+	<MAYORQUE>
+	|<MENORQUE>
+	|<MAYORIGUALQUE>
+	|<MENORIGUALQUE>
+	|<IGUALQUE>
+	|<DIFERENTEDE>
+
+}
+
+
+
+
+
+
+
+
