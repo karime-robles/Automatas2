@@ -1,20 +1,5 @@
 public class automatasproyecto{
-	public string nombre="Nadia Karime";
-	private boolean a=3;	private int b=10;
+	
 
-	public string escuela= "Instituto Tecnologico de Culiacan";
-	private boolean boolea=true;
-	public int c=5;
-	if(m>4){
-	public int numero=1;
-	public int ecuacion1=1*2+9/2;
- bandera=false;
-	}
-	while(10>2){
-		if (1>0.5){
-		}else{
-		public int val_cuatro=4;
-		}
-		
-	}	
+public int ecuacion=1/3+5*2/2+4-8; 
 }

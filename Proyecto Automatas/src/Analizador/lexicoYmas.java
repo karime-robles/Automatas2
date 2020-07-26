@@ -22,10 +22,10 @@ class lexicoYmas implements lexicoYconstantes {
 
                         lexicoYmas analizador=new lexicoYmas(new FileInputStream("C:\Users\karim\Documents\GitHub\Automatas2\Proyecto Automatas"));
                         analizador.programa();
-                        System.out.println("-----------------------------------------------------------------------------------------------------");
-                        System.out.println("La cadena valida");
-                        System.out.println("Numero de Tokens:"+ tablaSimbolos.size());
-                        System.out.println("-----------------------------------------------------------------------------------------------------");
+                        //System.out.println("-----------------------------------------------------------------------------------------------------");
+                        //System.out.println("La cadena valida");
+                        //System.out.println("Numero de Tokens:"+ tablaSimbolos.size());
+                        //System.out.println("-----------------------------------------------------------------------------------------------------");
                 System.out.println("Impresion de la tabla de simbolos:");
                 System.out.println("");
                         //Impresion Clase

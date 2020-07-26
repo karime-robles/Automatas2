@@ -24,31 +24,10 @@ public class Arbol{
     	      Shunting parentNode=shunt(valorexpresion);
     	      System.out.println("Utilizando Postorden");
     	      postorden(parentNode);
-    	      //ensamblador
-    	     /* System.out.println("Codigo Intermedio Generado ------- Triplos---");
-    	        dfs(parentNode);
-    	        System.out.println("--------------------------------------------------------------------------------------");
-    	        System.out.println("codigo ensamblador");
-    	        System.out.println("          .MODEL          small");
-    	        System.out.println("          .DATA");
-    	        System.out.println("T1        DW              0");
-    	        System.out.println("T2        DB              0");
-    	        System.out.println("X         DB              0");
-    	        System.out.println("          .CODE");
-    	        System.out.println("MAIN      PROC            FAR");
-    	        System.out.println("          .STARTUP");
-    	        ensamblador(parentNode);
-    	        System.out.println("          ;imprimir");
-    	        System.out.println("          ADD    X,30H");
-    	        System.out.println("          MOV    BX,0001H");
-    	        System.out.println("          MOV    DL,X");
-    	        System.out.println("          MOV    AH,02H");
-    	        System.out.println("          INT    21H");
-    	        System.out.println("          .EXIT");
-    	        System.out.println("MAIN      ENDP");
-    	        System.out.println("          END");
-    	      //fin ensamblador*/
-    	      System.out.println("Codigo Intermedio Generado -------- Triplo----");
+    	     
+    	     System.out.println("----------------------------------------------------------------------------------");
+    	     System.out.println("--------------------------Codigo Intermedio Generado------------------------------");
+	     System.out.println("-------------------------------------Triplo---------------------------------------");
     	      dfs(parentNode);
     	      
     	      //Evaluar expresion
@@ -62,6 +41,7 @@ public class Arbol{
     	            se.printStackTrace();
     	        }
     		  }
+		System.out.println("----------------------------------------------------------------------------");
 	}
 
 	public static void main(String[] args) {
